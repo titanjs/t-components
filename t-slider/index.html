@@ -1,0 +1,45 @@
+
+<index: arrays="option/options" element="t-slider">
+  <div class="slider">
+    <div class="scrollbar">
+      <div class="handle">
+        <div class="mousearea"></div>
+      </div>
+    </div>
+    <div class="slider-frame">
+      <ul class="slider-slidee">
+        {{if @featured}}
+          {{with first(query)}}
+            <li class="slider-block slider-lg-object">
+              <a href="/projects/{{this.slug}}">
+                <img src="/-/images/{{this.thumbnail}}/-/scale_crop/580x340/center/{{this.slug}}.jpg" alt="{{this.title}}">
+              </a>
+            </li>
+          {{/}}
+          {{each rest(query) as #group, #i}}
+            <li class="slider-block">
+              <ul class="slider-block-stacked">
+                {{each #group as #item, #ii}}
+                  <li class="slider-sm-object">
+                    <a href="/projects/{{#item.slug}}">
+                      <img src="/-/images/{{#item.thumbnail}}/-/scale_crop/280x160/center/{{#item.slug}}.jpg" alt="{{#item.title}}">
+                    </a>
+                  </li>
+                {{/}}
+              </ul>
+            </li>
+          {{/}}
+        {{else}}
+          {{each query}}
+            <li class="slider-block slider-lg-object">
+              <a href="/projects/{{this.slug}}">
+                <img src="/-/images/{{this.thumbnail}}/-/scale_crop/580x340/center/{{this.slug}}.jpg" alt="{{this.title}}">
+              </a>
+            </li>
+          {{/}}
+        {{/}}
+      </ul>
+    </div>
+  </div>
+  <br>
+  <div class="clearfix"></div>

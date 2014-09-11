@@ -1,0 +1,22 @@
+{
+  "name": "t-components",
+  "version": "0.0.1",
+  "description": "A Derby component library",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jshint **/*.js --exclude ./node_modules/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/titanjs/d-components"
+  },
+  "author": "Kyle Finley",
+  "license": "ICS",
+  "bugs": {
+    "url": "https://github.com/titanjs/d-components/issues"
+  },
+  "homepage": "https://github.com/titanjs/d-components",
+  "devDependencies": {
+    "jshint": "*"
+  }
+}

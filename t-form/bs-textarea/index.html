@@ -1,0 +1,18 @@
+<index: element="bs-textarea">
+  <div class="form-group{{if error}} has-error{{/if}}">
+    <label class="control-label col-md-2" for="input{{id}}">{{unescaped @label}}</label>
+    <div class="col-md-10">
+      <textarea 
+        as="textarea"
+        on-blur="checkRequired()"
+        on-keyup="checkRequired()"
+        class="form-control {{@class}}"
+        type="{{@type}}"
+        name="{{@name}}"
+        required="{{required}}"
+        id="input{{id}}">
+        {{@value || ''}}
+      </textarea>
+      <span class="help-block">{{error}}</span>
+    </div>
+  </div>

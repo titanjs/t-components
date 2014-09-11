@@ -1,0 +1,23 @@
+
+<index: arrays="option/options" element="t-social-share">
+  <ul id="social-share" class="list-inline">
+    <li> <button on-click="comments()" class="btn-link"><i class="icon-comment"></i>&nbsp;&nbsp;Comments</button> </li>
+    <li> <button on-click="twitter()" class="btn-link"><i class="icon-twitter-squared"></i>&nbsp;&nbsp;Twitter</button> </li>
+    <li> <button on-click="facebook()" class="btn-link"><i class="icon-facebook-squared"></i>&nbsp;&nbsp;Facebook</button> </li>
+    <li> <button on-click="gplus()" class="btn-link"><i class="icon-gplus-squared"></i>&nbsp;&nbsp;Google</button> </li>
+    <li> <button on-click="toggleEmailForm()" x-as="toggle" class="btn-link {{if showEmailForm}} active{{/if}}"><i class="icon-mail-alt"></i>&nbsp;&nbsp;Share</button> </li>
+  </ul>
+  {{if showEmailForm}}
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8">
+        <br/>
+        <form on-submit="sendEmail" class="form-horizontal" method="POST">
+          <bs-input type="text" value="{{msg.name}}" label="Your Name" required="true"></bs-input>
+          <bs-input type="email" value="{{msg.email}}" label="Email <small>(Address to share with)</small>" required="true"></bs-input>
+          <bs-textarea label="Messages" rows="4" required="true" value="{{msg.message}}"></bs-textarea>
+          <bs-controls value="Send"></bs-controls>
+        </form>
+      </div>
+    </div>
+  {{/if}}
+

@@ -1,0 +1,17 @@
+<index: element="t-star-rating">
+  <div class="star-rating" on-mouseout='out()'>
+  <!-- <div class="star-rating"> -->
+    {{each outOf as #s, #i}}
+      <div class='star-item {{if #i < hover}}active{{/if}}' on-mouseover="hover(#i)" on-click='select(#i)'>
+        {{if hover > #i}}
+          <d-core-icon icon="star"></d-core-icon>
+        {{else}}
+          {{if rating > #i}}
+            <d-core-icon icon="star"></d-core-icon>
+          {{else}}
+            <d-core-icon icon="star-outline"></d-core-icon>
+          {{/if}}
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>

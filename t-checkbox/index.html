@@ -1,0 +1,12 @@
+<index: element="t-checkbox">
+  {{if @label}}
+  <div class="checkbox">
+    <label for="{{@id}}">
+      <input type="checkbox" checked="{{@checked}}" disabled="{{@disabled}}">
+      {{@label}}
+    </label>
+  </div>
+  {{else}}
+    <input type="checkbox" checked="{{@checked}}" disabled="{{@disabled}}">
+  {{/}}
+

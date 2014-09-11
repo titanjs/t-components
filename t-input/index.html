@@ -1,0 +1,19 @@
+<index: element="t-input">
+  {{if @label}}
+    <label class="control-label {{@labelClass}}" for="">
+      {{@label}}
+    </label>
+    <div class="input-group {{@inputClass}}">
+      {{if @prefix}}
+      <div class="input-group-addon">{{@prefix}}</div>
+      {{/}}
+      <input type="{{@inputType}}" class="form-control {{@class}}" type="{{@type}}" step="{{@step}}" min="{{@min}}" max="{{@max}}" value="{{@value}}" disabled="{{@disabled}}">
+    </div>
+  {{else}}
+    <div class="input-group">
+      {{if @prefix}}
+      <div class="input-group-addon">{{@prefix}}</div>
+      {{/}}
+      <input type="{{@inputType}}" class="form-control {{@class}}" type="{{@type}}" step="{{@step}}" min="{{@min}}" max="{{@max}}" value="{{@value}}" disabled="{{@disabled}}">
+    </div>
+  {{/}}

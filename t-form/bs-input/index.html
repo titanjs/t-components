@@ -1,0 +1,17 @@
+<index: element="bs-input">
+  <div class="form-group{{if error}} has-error{{/if}}">
+    <label class="control-label col-md-2" for="input{{id}}">{{unescaped @label}}</label>
+    <div class="col-md-10">
+      <input 
+        as="input"
+        on-blur="checkRequired()"
+        on-keyup="checkRequired()"
+        class="form-control"
+        type="{{@type}}"
+        name="{{@name}}"
+        required="{{required}}"
+        value="{{@value || ''}}"
+        id="input{{id}}">
+      <span class="help-block">{{error}}</span>
+    </div>
+  </div>
