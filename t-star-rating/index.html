@@ -1,5 +1,5 @@
 <index: element="t-star-rating">
-  <div class="star-rating" on-mouseout='out()'>
+  <div class="t-star-rating" on-mouseout='out()'>
   <!-- <div class="star-rating"> -->
     {{each outOf as #s, #i}}
       <div class='star-item {{if #i < hover}}active{{/if}}' on-mouseover="hover(#i)" on-click='select(#i)'>
