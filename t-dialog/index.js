@@ -1,8 +1,8 @@
-module.exports = Modal;
-function Modal() {}
-Modal.prototype.view = __dirname;
+module.exports = Dialog;
+function Dialog() {}
+Dialog.prototype.view = __dirname;
 
-Modal.prototype.create = function(model, dom) {
+Dialog.prototype.create = function(model, dom) {
   var modal = this;
   dom.on('keydown', function(e) {
     if (!model.get('show')) return;
@@ -12,7 +12,7 @@ Modal.prototype.create = function(model, dom) {
   });
 };
 
-Modal.prototype.show = function() {
+Dialog.prototype.show = function() {
   var model = this.model;
   this.emitDelayable('show', function() {
     model.set('show', true);
@@ -22,7 +22,7 @@ Modal.prototype.show = function() {
   });
 };
 
-Modal.prototype.hide = function(action) {
+Dialog.prototype.hide = function(action) {
   var cancelled = this.emitCancellable('hide', action);
   if (cancelled) return;
   var model = this.model;
