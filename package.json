@@ -8,15 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/titanjs/d-components"
+    "url": "git://github.com/titanjs/t-components"
   },
   "author": "Kyle Finley",
   "license": "ICS",
   "bugs": {
-    "url": "https://github.com/titanjs/d-components/issues"
+    "url": "https://github.com/titanjs/t-components/issues"
   },
-  "homepage": "https://github.com/titanjs/d-components",
+  "homepage": "https://github.com/titanjs/t-components",
   "devDependencies": {
     "jshint": "*"
+  },
+  "dependencies": {
+    "moment": "^2.8.3"
   }
 }
