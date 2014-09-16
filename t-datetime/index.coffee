@@ -1,4 +1,4 @@
-moment = require "moment/min/moment-with-locales"
+moment = require 'moment/min/moment-with-locales'
 ViewHelpers = require('./viewHelpers').ViewHelpers
 Builders = require './builders'
 
@@ -44,7 +44,7 @@ module.exports = class Datepicker extends ViewHelpers
     currentDate = moment(@getCurrentDate())
   
     # calculate previous year from date
-    nextYearDate = currentDate.add('years', 1)
+    nextYearDate = currentDate.add(1, 'years')
     @gotoYearView nextYearDate
   
   prevYear: ->
@@ -52,7 +52,7 @@ module.exports = class Datepicker extends ViewHelpers
     currentDate = moment(@getCurrentDate())
   
     # calculate previous year from date
-    prevYearDate = currentDate.subtract('years', 1)
+    prevYearDate = currentDate.subtract(1, 'years')
     @gotoYearView prevYearDate
   
   gotoDecadeView: (date) ->
@@ -67,12 +67,12 @@ module.exports = class Datepicker extends ViewHelpers
   
   prevDecade: ->
     currentDate = moment(@getCurrentDate())
-    prevDecadeDate = currentDate.subtract('years', 10)
+    prevDecadeDate = currentDate.subtract(10, 'years')
     @gotoDecadeView prevDecadeDate
   
   nextDecade: ->
     currentDate = moment(@getCurrentDate())
-    nextDecadeDate = currentDate.add('years', 10)
+    nextDecadeDate = currentDate.add(10, 'years')
     @gotoDecadeView nextDecadeDate
   
   select: (selectedDate) ->
@@ -89,7 +89,7 @@ module.exports = class Datepicker extends ViewHelpers
     currentDate = moment(@getCurrentDate())
   
     # calculate previous month from date
-    prevMonthDate = currentDate.subtract('months', 1)
+    prevMonthDate = currentDate.subtract(1, 'months')
     @gotoMonthView prevMonthDate
   
   nextMonth: ->
@@ -97,7 +97,7 @@ module.exports = class Datepicker extends ViewHelpers
     currentDate = moment(@getCurrentDate())
   
     # calculate previous month from date
-    nextMonthDate = currentDate.add('months', 1)
+    nextMonthDate = currentDate.add(1, 'months')
     @gotoMonthView nextMonthDate
   
   setCurrentDate: (currentDate) ->

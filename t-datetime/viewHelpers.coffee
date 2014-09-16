@@ -1,22 +1,22 @@
-moment = require "moment/min/moment-with-locales"
+moment = require 'moment/min/moment-with-locales'
 
 exports.ViewHelpers = class ViewHelpers
 
   getMonth: (currentDate) ->
-    moment(currentDate).lang(@lang).format "MMMM"
+    moment(currentDate).locale(@lang).format 'MMMM'
 
   getYear: (currentDate) ->
-    moment(currentDate).format "YYYY"
+    moment(currentDate).format 'YYYY'
 
   getDecadeRange: (currentDate) ->
     currentYear = moment(currentDate).year()
     yearInDecade = currentYear % 10
     firstYearInDecade = currentYear - yearInDecade
     lastYearInDecade = firstYearInDecade + 9
-    firstYearInDecade + " - " + lastYearInDecade
+    firstYearInDecade + ' - ' + lastYearInDecade
 
   activeDate: (active, date) ->
-    active = @model.get("active")
+    active = @model.get('active')
     active is date
 
   activeMonth: (active, date) ->
@@ -32,7 +32,7 @@ exports.ViewHelpers = class ViewHelpers
 
   weekDays: ->
     days = []
-    moment.lang @lang
+    moment.localeData @lang
     for i in [0..6]
       days.push moment.weekdaysMin(i)
     days
