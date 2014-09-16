@@ -1,11 +1,10 @@
-#moment = require 'moment/min/moment-with-langs.min'
 
 module.exports = class Builders
   constructor: (@lang, @moment) ->
 
   buildYearView: (date) ->
     months = []
-    month = @moment(date).localeData(@lang).month(0)
+    month = date.locale(@lang).month(0)
     for i in [1..12]
       months.push
         abbr: month.format('MMM')
@@ -15,7 +14,6 @@ module.exports = class Builders
 
   buildDecadeView: (date) ->
     years = []
-    date = @moment(date)
     currentYear = date.year()
 
     # how far into the decade are we, eg 1 year for 2011
@@ -33,8 +31,6 @@ module.exports = class Builders
     years
 
   buildMonthView: (date) ->
-
-    date = @moment(date)
     datesFromPrevMonth = addExtraDaysFromPrevMonth(date.clone())
     datesInCurrentMonth = getDaysInCurrentMonth(date.clone())
     datesFromNextMonth = addExtraDaysFromNextMonth(date.clone())
