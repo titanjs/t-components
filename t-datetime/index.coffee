@@ -5,11 +5,12 @@ Builders = require './builders'
 module.exports = class Datepicker extends ViewHelpers
   view: __dirname
 
-  init: (model) ->
-    @lang = model.get('lang') || 'en'
+  init: () ->
+    @lang = @model.get('lang') || 'en'
     @builders = new Builders(@lang, moment)
-    currentDate = moment()
-    @gotoMonthView currentDate
+    @active = @model.at('active')
+    @setCurrent moment(@active.get())
+    @gotoMonthView @getCurrent().format('YYYY-MM')
   
   create: (model, dom) ->
     global.moment = moment
@@ -18,90 +19,47 @@ module.exports = class Datepicker extends ViewHelpers
     dom.on 'mousedown', (e) =>
       model.set 'show', false unless @parent.contains(e.target)
 
-  gotoMonthView: (date) ->
-    @setCurrentDate date
-    @monthView date
-  
-  monthView: (date) ->
-    return unless date
-    date = moment(date)
-    weeks = @builders.buildMonthView(date)
-    @model.set 'weeks', weeks
-    @model.set 'view', 'month'
-  
-  gotoYearView: (date) ->
-    date = moment(date, 'YYYY-MM-DD')
-    @setCurrentDate date, 'YYYY-MM-DD'
-    @yearView date
-  
-  yearView: (date) ->
-    months = @builders.buildYearView(date)
-    @model.set 'months', months
-    @model.set 'view', 'year'
-  
-  nextYear: ->
-    # get current month
-    currentDate = moment(@getCurrentDate())
-  
-    # calculate previous year from date
-    nextYearDate = currentDate.add(1, 'years')
-    @gotoYearView nextYearDate
-  
-  prevYear: ->
-    # get current month
-    currentDate = moment(@getCurrentDate())
-  
-    # calculate previous year from date
-    prevYearDate = currentDate.subtract(1, 'years')
-    @gotoYearView prevYearDate
-  
-  gotoDecadeView: (date) ->
-    date = moment(date)
-    @setCurrentDate date
-    @decadeView date
-  
-  decadeView: (date) ->
-    years = @builders.buildDecadeView(date)
-    @model.set 'years', years
-    @model.set 'view', 'decade'
-  
-  prevDecade: ->
-    currentDate = moment(@getCurrentDate())
-    prevDecadeDate = currentDate.subtract(10, 'years')
-    @gotoDecadeView prevDecadeDate
-  
-  nextDecade: ->
-    currentDate = moment(@getCurrentDate())
-    nextDecadeDate = currentDate.add(10, 'years')
-    @gotoDecadeView nextDecadeDate
-  
+  setCurrent: (val) ->
+    @model.set 'currentDate', val
+
+  getCurrent: () ->
+    @model.get 'currentDate'
+
+  add: (number, unit) ->
+    @setCurrent @getCurrent().add(number, unit)
+    @getCurrent()
+
+  subtract: (number, unit) ->
+    @setCurrent @getCurrent().subtract(number, unit)
+    @getCurrent()
+
   select: (selectedDate) ->
     date = moment(selectedDate.fullDate)
     selectedMonth = date.month()
-    currentDate = moment(@getCurrentDate())
-    currentMonth = currentDate.month()
+    currentMonth = @getCurrent().month()
     @gotoMonthView date  if selectedMonth isnt currentMonth
     @model.set 'active', selectedDate.fullDate
     @model.set 'show', false
 
-  prevMonth: ->
-    # get current month
-    currentDate = moment(@getCurrentDate())
+  gotoMonthView: (date) ->
+    @setCurrent moment(date, 'YYYY-MM')
+    @model.set 'weeks', @builders.buildMonthView(@getCurrent())
+    @model.set 'view', 'month'
   
-    # calculate previous month from date
-    prevMonthDate = currentDate.subtract(1, 'months')
-    @gotoMonthView prevMonthDate
+  gotoYearView: (date) ->
+    @setCurrent moment(date, 'YYYY-MM')
+    @model.set 'months', @builders.buildYearView(@getCurrent())
+    @model.set 'view', 'year'
   
-  nextMonth: ->
-    # get current month
-    currentDate = moment(@getCurrentDate())
+  gotoDecadeView: (date) ->
+    @setCurrent moment(date, 'YYYY')
+    @model.set 'years',  @builders.buildDecadeView(@getCurrent())
+    @model.set 'view', 'decade'
   
-    # calculate previous month from date
-    nextMonthDate = currentDate.add(1, 'months')
-    @gotoMonthView nextMonthDate
+  prevMonth:  -> @gotoMonthView  @subtract(1, 'months')
+  nextMonth:  -> @gotoMonthView  @add(1, 'months')
+  prevYear:   -> @gotoYearView   @subtract(1, 'years')
+  nextYear:   -> @gotoYearView   @add(1, 'years')
+  prevDecade: -> @gotoDecadeView @subtract(10, 'years')
+  nextDecade: -> @gotoDecadeView @add(10, 'years')
   
-  setCurrentDate: (currentDate) ->
-    @model.set 'currentDate', currentDate
-  
-  getCurrentDate: ->
-    @model.get 'currentDate'

@@ -21,8 +21,8 @@ exports.ViewHelpers = class ViewHelpers
 
   activeMonth: (active, date) ->
     # check if active is the same year and month as monthDate
-    activeDate = moment(active)
-    date = moment(date)
+    activeDate = moment(active, 'YYYY-MM-DD')
+    date = moment(date, 'YYYY-MM')
     activeDate.year() is date.year() and activeDate.month() is date.month()
 
   activeYear: (active, year) ->
@@ -32,7 +32,7 @@ exports.ViewHelpers = class ViewHelpers
 
   weekDays: ->
     days = []
-    moment.localeData @lang
+    moment.locale @lang
     for i in [0..6]
       days.push moment.weekdaysMin(i)
     days
