@@ -16,12 +16,11 @@ exports.ViewHelpers = class ViewHelpers
     firstYearInDecade + ' - ' + lastYearInDecade
 
   activeDate: (active, date) ->
-    active = @model.get('active')
-    active is date
+    moment(active).format('YYYY-MM-DD') is date
 
   activeMonth: (active, date) ->
     # check if active is the same year and month as monthDate
-    activeDate = moment(active, 'YYYY-MM-DD')
+    activeDate = moment(active)
     date = moment(date, 'YYYY-MM')
     activeDate.year() is date.year() and activeDate.month() is date.month()
 

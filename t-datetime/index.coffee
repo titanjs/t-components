@@ -8,8 +8,8 @@ module.exports = class Datepicker extends ViewHelpers
   init: () ->
     @lang = @model.get('lang') || 'en'
     @builders = new Builders(@lang, moment)
-    @active = @model.at('active')
-    @setCurrent moment(@active.get())
+    # Use todays date if date is `undefined`
+    @setCurrent moment(@model.get('value') or Date.now())
     @gotoMonthView @getCurrent().format('YYYY-MM')
   
   create: (model, dom) ->
@@ -35,10 +35,10 @@ module.exports = class Datepicker extends ViewHelpers
 
   select: (selectedDate) ->
     date = moment(selectedDate.fullDate)
-    selectedMonth = date.month()
-    currentMonth = @getCurrent().month()
-    @gotoMonthView date  if selectedMonth isnt currentMonth
-    @model.set 'active', selectedDate.fullDate
+    @gotoMonthView date  if date.month() isnt @getCurrent().month()
+
+    # Set date in milliseconds offset
+    @model.set 'value', +date
     @model.set 'show', false
 
   gotoMonthView: (date) ->

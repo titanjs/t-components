@@ -11,7 +11,7 @@
         <view name="decade"></view>
       {{/if}}
     {{else}}
-      <input type="text" value="{{active}}" class="form-control" on-focus="model.set('show', true)" id="{{id}}" name="{{name}}" required="{{required}}">
+      <t-datetime-input value="{{value}}" on-change="setCurrent(value)" class="form-control" on-focus="model.set('show', true)" id="{{id}}" name="{{name}}" required="{{required}}"/>
 
       <div style="position: relative">
         <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-top" style="display: {{if show}}block{{/}};">
@@ -52,7 +52,7 @@
       {{each weeks as #datesInWeek, #i}}
         <tr>
         {{each #datesInWeek as #date, #j}}
-          <td on-click="select(#date)" class="day {{if !#date.thisMonth}}old{{/if}} {{if activeDate(active, #date.fullDate)}}active{{/if}}">{{#date.date}}</td>
+          <td on-click="select(#date)" class="day {{if !#date.thisMonth}}old{{/if}} {{if activeDate(value, #date.fullDate)}}active{{/if}}">{{#date.date}}</td>
         {{/each}}
         </tr>
       {{/each}}
@@ -74,7 +74,7 @@
         <tr>
           <td colspan="7">
           {{each months as #month}}
-            <span on-click="gotoMonthView(#month.date)" class="month {{if activeMonth(active, #month.date)}}active{{/if}}">{{#month.abbr}}</span>
+            <span on-click="gotoMonthView(#month.date)" class="month {{if activeMonth(value, #month.date)}}active{{/if}}">{{#month.abbr}}</span>
           {{/each}}
           </td>
         </tr>

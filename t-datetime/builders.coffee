@@ -2,6 +2,15 @@
 module.exports = class Builders
   constructor: (@lang, @moment) ->
 
+  buildMonthView: (date) ->
+    datesFromPrevMonth = addExtraDaysFromPrevMonth(date.clone())
+    datesInCurrentMonth = getDaysInCurrentMonth(date.clone())
+    datesFromNextMonth = addExtraDaysFromNextMonth(date.clone())
+    allDates = datesFromPrevMonth.concat(datesInCurrentMonth, datesFromNextMonth)
+    weeks = []
+    weeks.push allDates.splice(0, 7)  while allDates.length > 0
+    weeks
+
   buildYearView: (date) ->
     months = []
     month = date.locale(@lang).month(0)
@@ -29,15 +38,6 @@ module.exports = class Builders
         inDecade: yearInDecade
       year.add 1, 'years'
     years
-
-  buildMonthView: (date) ->
-    datesFromPrevMonth = addExtraDaysFromPrevMonth(date.clone())
-    datesInCurrentMonth = getDaysInCurrentMonth(date.clone())
-    datesFromNextMonth = addExtraDaysFromNextMonth(date.clone())
-    allDates = datesFromPrevMonth.concat(datesInCurrentMonth, datesFromNextMonth)
-    weeks = []
-    weeks.push allDates.splice(0, 7)  while allDates.length > 0
-    weeks
 
 
 # split all dates up
