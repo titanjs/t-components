@@ -4,7 +4,7 @@
   "description": "A Derby component library",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jshint **/*.js --exclude ./node_modules/**/*.js"
+    "test": "./node_modules/.bin/mocha **/*.mocha.coffee; ./node_modules/.bin/jshint **/*.js --exclude node_modules/expect.js/*.js node_modules"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/titanjs/t-components",
   "devDependencies": {
-    "jshint": "*"
+    "coffee-script": "*",
+    "expect.js": "*",
+    "jshint": "*",
+    "mocha": "*"
   },
   "dependencies": {
     "moment": "^2.8.3"
