@@ -1,0 +1,118 @@
+.d-core-drawer-panel
+  display block
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  overflow hidden
+  .drawer
+    position absolute
+    top 0
+    /* FIXME(ffu) remove hard-coded drawer panel width */
+    // width 256px
+    height 100%
+    box-sizing border-box
+    -mox-box-sizing border-box
+    box-shadow 1px 0 1px rgba(0, 0, 0, 0.1)
+    transition -webkit-transform ease-in-out 0.3s, margin ease-in-out 0.3s
+    transition transform ease-in-out 0.3s, margin ease-in-out 0.3s
+    // Hack to force webkit browser to use the GPU
+    -webkit-transform translateZ(0)
+    // z-index 999
+  .left-drawer-wrapper
+    left 0
+    right auto
+    width 300px
+    margin-left -300px
+    &.active
+      margin-left 0
+  .right-drawer-wrapper
+    right 0
+    left 100%
+    width 500px
+    margin-left 0px
+    z-index 1001
+    &.active
+      margin-left -500px
+  // &.transition
+  //   .left-drawer-wrapper
+  //     transition -webkit-transform ease-in-out 0.3s, width ease-in-out 0.3s
+  //     transition transform ease-in-out 0.3s, width ease-in-out 0.3s
+  // &.transition
+  //   .right-drawer-wrapper
+  //     transition -webkit-transform ease-in-out 0.3s, width ease-in-out 0.3s
+  //     transition transform ease-in-out 0.3s, width ease-in-out 0.3s
+  .main
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    box-shadow 1px 0 1px rgba(0, 0, 0, 0.1);
+    &.push-right
+      margin-left 300px
+    &.push-left
+      margin-right 500px
+    transition -webkit-transform ease-in-out 0.3s, margin ease-in-out 0.3s
+    transition transform ease-in-out 0.3s, margin ease-in-out 0.3s
+    // Hack to force webkit browser to use the GPU
+    -webkit-transform translateZ(0)
+  // &.left-drawer.transition
+  //   .main
+  //     transition left ease-in-out 0.3s, padding ease-in-out 0.3s
+  // &.right-drawer
+  //   .main
+  //     right 256px
+  // &.left-drawer
+  //   .main
+  //     left 256px
+  // &.right-drawer.transition
+  //   .main
+  //     transition right ease-in-out 0.3s, padding ease-in-out 0.3s
+  .scrim
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background-color rgba(0, 0, 0, 0.3)
+    visibility hidden
+    opacity 0
+    transition opacity ease-in-out 0.38s, visibility ease-in-out 0.38s
+    transition -webkit-transform ease-in-out 0.38s, visibility ease-in-out 0.38s
+    // Hack to force webkit browser to use the GPU
+    -webkit-transform translateZ(0)
+    z-index 1000
+    &.active
+      visibility visible
+      opacity .9
+
+  /*
+  narrow layout
+  */
+  // .narrow-layout > .drawer.core-selected
+  //   box-shadow 2px 2px 4px rgba(0, 0, 0, 0.15)
+
+  // .left-drawer.narrow-layout > .drawernot(.core-selected)
+  //   -webkit-transform translate3d(-100%, 0, 0)
+  //   transform translate3d(-100%, 0, 0)
+
+  // .right-drawer.narrow-layout > .drawernot(.core-selected)
+  //   left auto
+  //   -webkit-transform translate3d(100%, 0, 0)
+  //   transform translate3d(100%, 0, 0)
+
+  // .left-drawer.narrow-layout > .main
+  //   left 0 !important
+  //   padding 0
+
+  // .right-drawer.narrow-layout > .main
+  //   left 0
+  //   right 0
+  //   padding 0
+
+  // .narrow-layout > .mainnot(.core-selected) .scrim,
+  // .dragging .scrim
+  //   visibility visible
+  //   opacity 1

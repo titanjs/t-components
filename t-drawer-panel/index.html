@@ -1,0 +1,23 @@
+<index: element="d-core-drawer-panel" attributes="leftdrawer rightdrawer main">
+  <div class="d-core-drawer-panel narrow-layout{{if left}} left-drawer{{/if}}{{if right}} right-drawer{{/if}}">
+
+    <!-- {{if right}} -->
+    <div class="right-drawer-wrapper drawer{{if right}} active{{/if}}">
+      <d-paper-shadow z="3" hasPosition="true"></d-paper-shadow>
+      {{@rightdrawer}}
+    </div>
+    <!-- {{/if}} -->
+
+    <div class="main{{if left}} push-right{{/if}}">
+      {{@main}}
+    </div>
+
+    <div class="scrim{{if right}} active{{/if}}" on-click="hide('right')"></div>
+
+    <!-- {{if left}} -->
+    <div class="left-drawer-wrapper drawer{{if left}} active{{/if}}">
+      {{@leftdrawer}}
+    </div>
+    <!-- {{/if}} -->
+
+  </div>
