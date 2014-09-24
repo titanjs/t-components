@@ -48,7 +48,7 @@ Example:
 Use `mode` to control the header and scrolling behavior.
 -->
 
-<div class="d-core-header-panel {{mode}}">
+<div class="t-header-panel {{mode}}">
 
   <div class="outer-container vertical layout" on-scroll="scroll($event)">
 
@@ -58,7 +58,7 @@ Use `mode` to control the header and scrolling behavior.
 
     <div class="main-panel flex vertical layout">
     
-      <div as="mainContainer" class="main-container{{if mode !== 'cover'}} flex{{/if}}" on-scroll="scroll($event)">
+      <div as="mainContainer" class="main-container{{if mode !== 'cover'}} flex{{/if}} layout vertical" on-scroll="scroll($event)">
         {{@content}}
       </div>
       
