@@ -1,29 +1,33 @@
-module.exports = run;
+module.exports = DisqusComments;
 
-function run(app, options){
-  options || (options = {});
+function DisqusComments(){};
+DisqusComments.prototype.view = __dirname;
 
-  app.use(require('t-form/index.js'));
+DisqusComments.prototype.init = function(model) { }
 
-  app.component(require('t-admin/index.js'));
-  app.component(require('t-auth/index.js'));
-  app.component(require('t-buttons/index.js'));
-  app.component(require('t-counter/index.js'));
-  app.component(require('t-datetime/index.js'));
-  app.component(require('t-disqus-comments/index.js'));
-  app.component(require('t-dropdown/index.js'));
-  app.component(require('t-editor/index.js'));
-  app.component(require('t-google-analytics/index.js'));
-  app.component(require('t-google-authorship/index.js'));
-  app.component(require('t-image/index.js'));
-  app.component(require('t-image-viewer/index.js'));
-  app.component(require('t-layout-section/index.js'));
-  app.component(require('t-modal/index.js'));
-  app.component(require('t-multiselect/index.js'));
-  app.component(require('t-polyfill-ie8/index.js'));
-  app.component(require('t-richtext/index.js'));
-  app.component(require('t-slider/index.js'));
-  app.component(require('t-social-share/index.js'));
-  app.component(require('t-tabs/index.js'));
-  app.component(require('t-tumblr/index.js'));
-}
+DisqusComments.prototype.create = function(model, dom) {
+  if (!window.DISQUS) {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + model.get('shortname') + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  } else {
+    // if we have a disqus var then reset it.
+    DISQUS.reset({
+      reload: true,
+      // Optionally set the page identifier and page url by passinging in
+      // pageIdentifier and pageUrl attributes.
+      config: function() {
+        var pi = modle.get('pageIdentifier');
+        if (pi) {
+          this.page.identifier = pi;
+        }
+        var pu = modle.get('pageUrl');
+        if (pu) {
+          this.page.url = pu;
+        }
+      }
+    });
+  }
+};
