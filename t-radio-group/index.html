@@ -1,28 +1,14 @@
-<index: element="t-radio-group">
+<index: arrays="option/options" element="t-radio-group">
   <div class="btn-group" data-toggle="buttons">
-    <label class="btn btn-primary active">
-      <input type="radio" name="options" id="option1" checked> Option 1 (preselected)
-    </label>
-    <label class="btn btn-primary">
-      <input type="radio" name="options" id="option2"> Option 2
-    </label>
-    <label class="btn btn-primary">
-      <input type="radio" name="options" id="option3"> Option 3
-    </label>
+    {{each @options as #o}}
+      <div class="radio">
+        <label>
+          {{if #o.value === value}}
+            <input type="radio" on-click="select(#o)" checked tabindex="-1"> {{#o.content}}
+          {{else}}
+            <input type="radio" on-click="select(#o)" tabindex="-1"> {{#o.content}}
+          {{/if}}
+        </label>
+      </div>
+    {{/each}}
   </div>
-
-  {{if @label}}
-  <div class="control-label">
-    <label class="{{@labelClass}}" for="">
-      {{@label}}
-    </label>
-    <input type="{{@inputType}}" class="form-control {{@class}}" type="{{@type}}" step="{{@step}}" min="{{@min}}" max="{{@max}}" value="{{@value}}" disabled="{{@disabled}}">
-  </div>
-  {{else}}
-    <div class="input-group">
-      {{if @prefix}}
-      <div class="input-group-addon">{{@prefix}}</div>
-      {{/}}
-      <input type="{{@inputType}}" class="form-control {{@class}}" type="{{@type}}" step="{{@step}}" min="{{@min}}" max="{{@max}}" value="{{@value}}" disabled="{{@disabled}}">
-    </div>
-  {{/}}
