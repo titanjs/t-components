@@ -1,0 +1,33 @@
+//
+// Tumblr
+// --------------------------------------------------
+
+
+// Mixin and adjust the regular image class
+.img-tumblr {
+  // .img-thumbnail();
+  display: block; // Override the inline-block from `.img-thumbnail`
+  padding-bottom: 1.7em; 
+
+  > img {
+    // .img-responsive();
+  }
+}
+
+
+// Add a hover state for linked versions only
+a.img-tumblr:hover,
+a.img-tumblr:focus {
+  // border-color: @link-color;
+  border-color: white;
+}
+
+// Images and captions
+// .img-tumblr > img {
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+.img-tumblr .caption {
+  // padding: @thumbnail-caption-padding;
+  // color: @thumbnail-caption-color;
+}

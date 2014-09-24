@@ -1,0 +1,6 @@
+<index: arrays="option/options" element="t-tumblr-photostream">
+  {{each photos as #p}}
+    <a href="{{#p.url}}" class="img-tumblr">
+      <img class="img-responsive" src="{{#p.src}}" alt="{{#p.title}}">
+    </a>
+  {{/each}}
