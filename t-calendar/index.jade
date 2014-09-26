@@ -1,0 +1,60 @@
+index:(element='t-calendar')
+  //- .t-calendar
+  if view == 'month'
+    view(name='month')
+  if view == 'year'
+    view(name='year')
+  if view == 'decade'
+    view(name='decade')
+
+month:
+  div
+    .layout.horizontal
+      .flex.prev(on-click='prevMonth()' style='visibility: visible;')
+        t-icon(icon='chevron-left')
+      .flex.datepicker-switch(colspan='5' on-click='gotoYearView(currentDate)')
+        h4 {{getMonth(currentDate)}} {{getYear(currentDate)}}
+      .flex.next(on-click='nextMonth()' style='visibility: visible;')
+        t-icon(icon='chevron-right')
+  .flex.layout.vertical
+    .flex.layout.horizontal
+      each weekDays() as #day
+        .flex.dow
+          h5 {{#day}}
+    each weeks as #datesInWeek, #i
+      .flex.layout.horizontal
+        each #datesInWeek as #date, #j
+          .flex.day(class="{{if !#date.thisMonth}}old{{/if}} {{if activeDate(value, #date.fullDate)}}active{{/if}}" on-click='select(#date)') {{#date.date}}
+year:
+  //- .datepicker-months
+  div
+    table.table-condensed
+      thead
+        tr
+          th.prev(on-click='prevYear()' style='visibility: visible;')
+            t-icon(icon='chevron-left')
+          th.datepicker-switch(on-click='gotoDecadeView(currentDate)' colspan='5') {{getYear(currentDate)}}
+          th.next(on-click='nextYear()' style='visibility: visible;')
+            t-icon(icon='chevron-right')
+      tbody
+        tr
+          td(colspan='7')
+            each months as #month
+              span.month(class="{{if activeMonth(value, #month.date)}}active{{/if}}" on-click='gotoMonthView(#month.date)') {{#month.abbr}}
+
+decade:
+  //- .datepicker-years(style='display: block;')
+  div
+    table.table-condensed
+      thead
+        tr
+          th.prev(on-click='prevDecade()' style='visibility: visible;')
+            t-icon(icon='chevron-left')
+          th.datepicker-switch(colspan='5') {{getDecadeRange(currentDate)}}
+          th.next(on-click='nextDecade()' style='visibility: visible;')
+            t-icon(icon='chevron-right')
+      tbody
+        tr
+          td(colspan='7')
+            each years as #year
+              span.year(class="{{if !#year.inDecade}}old{{/if}} {{if activeYear(active, #year.year)}}active{{/if}}" on-click='gotoYearView(#year.year)') {{#year.year}}
