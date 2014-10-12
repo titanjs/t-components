@@ -11,13 +11,17 @@ module.exports = class Datepicker extends ViewHelpers
     # Use todays date if date is `undefined`
     @setCurrent moment(@model.get('value') or Date.now())
     @gotoMonthView @getCurrent().format('YYYY-MM')
+    # TODO:
+    # Update the calendar on value change
+    # @model.on 'change', 'value', (pre, curr) =>
+    #   @setCurrent moment(pre or Date.now())
   
-  create: (model, dom) ->
-    global.moment = moment
-    dom.on 'click', (e) =>
-      model.set 'show', true if @parent.contains(e.target)
-    dom.on 'mousedown', (e) =>
-      model.set 'show', false unless @parent.contains(e.target)
+  # create: (model, dom) ->
+  #   # global.moment = moment
+  #   dom.on 'click', (e) =>
+  #     model.set 'show', true if @parent.contains(e.target)
+  #   dom.on 'mousedown', (e) =>
+  #     model.set 'show', false unless @parent.contains(e.target)
 
   setCurrent: (val) ->
     @model.set 'currentDate', val

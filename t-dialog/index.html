@@ -12,13 +12,22 @@
         </div>
         <div class="modal-footer">
           {{@footer}}
-          {{each @actions}}
-            <button
-              on-click="hide(this.value || this.content)"
-              type="button"
-              class="btn {{this.class || 'btn-default'}}">
-              {{this.content}}
-            </button>
+          {{each @actions as #a}}
+            {{if #a.affirm}}
+              <button
+                on-click="affirm(#a.value || #a.content)"
+                type="button"
+                class="btn {{#a.class || 'btn-success'}}">
+                {{#a.content}}
+              </button>
+            {{else}}
+              <button
+                on-click="hide(#a.value || #a.content)"
+                type="button"
+                class="btn {{#a.class || 'btn-link'}}">
+                {{#a.content}}
+              </button>
+            {{/if}}
           {{/each}}
         </div>
       </div>

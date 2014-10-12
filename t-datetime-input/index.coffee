@@ -13,6 +13,13 @@ module.exports = class DatetimeInput
         @setFormatted(cur)
       # Rest `updateFormatted` so the next time it will update
       @model.set 'updateFormatted', true
+  
+  create: (model, dom) ->
+    # global.moment = moment
+    dom.on 'click', (e) =>
+      model.set 'show', true if @parent.contains(e.target)
+    dom.on 'mousedown', (e) =>
+      model.set 'show', false unless @parent.contains(e.target)
 
   setFormatted: (val) ->
     v = moment(val)

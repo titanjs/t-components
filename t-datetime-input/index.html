@@ -1,2 +1,12 @@
 <index: element="t-datetime-input">
-  <input type="datetime" value="{{formattedValue}}" on-keyup="setValue(formattedValue)" on-change="setValue(formattedValue)" class="form-control" id="{{id}}" name="{{name}}" class="{{class}}" required="{{required}}">
+  <div as="parent">
+    <input type="datetime" value="{{formattedValue}}" on-keyup="setValue(formattedValue)" on-change="setValue(formattedValue)" class="form-control" id="{{id}}" name="{{name}}" class="{{class}} form-control" required="{{required}}">
+
+    <div style="position: relative">
+      <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-top" style="display: {{if show}}block{{/}};">
+        {{if show}}
+          <t-datetime value="{{value}}"></t-datetime>
+        {{/}}
+      </div>
+    </div>
+  </div>

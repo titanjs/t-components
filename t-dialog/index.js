@@ -22,6 +22,10 @@ Dialog.prototype.show = function() {
   });
 };
 
+Dialog.prototype.affirm = function() {
+  this.emitDelayable('affirm', function() {});
+};
+
 Dialog.prototype.hide = function(action) {
   var cancelled = this.emitCancellable('hide', action);
   if (cancelled) return;

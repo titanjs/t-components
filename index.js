@@ -1,5 +1,5 @@
 module.exports = function(app, options) {
-  app.component(require('./t-icon'));
+  app.component(require('./t-button'));
   app.component(require('./t-calendar'));
   app.component(require('./t-checkbox'));
   app.component(require('./t-datetime'));
@@ -9,11 +9,17 @@ module.exports = function(app, options) {
   app.component(require('./t-dialog'));
   app.component(require('./t-favicons'));
   app.component(require('./t-header-panel'));
+  app.component(require('./t-icon'));
   app.component(require('./t-image'));
   app.component(require('./t-input'));
+  app.component(require('./t-item'));
+  app.component(require('./t-menu'));
   app.component(require('./t-radio-button'));
   app.component(require('./t-radio-group'));
+  app.component(require('./t-ripple'));
   app.component(require('./t-star-rating'));
+  app.component(require('./t-shadow'));
+  app.component(require('./t-toolbar'));
   app.component(require('./t-stared'));
   // app.loadStyles();
 };

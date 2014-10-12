@@ -1,9 +1,9 @@
 <index: element="t-drawer-panel" attributes="leftdrawer rightdrawer main">
-  <div class="d-core-drawer-panel narrow-layout{{if left}} left-drawer{{/if}}{{if right}} right-drawer{{/if}}">
+  <div class="t-drawer-panel narrow-layout{{if left}} left-drawer{{/if}}{{if right}} right-drawer{{/if}}">
 
     <!-- {{if right}} -->
     <div class="right-drawer-wrapper drawer{{if right}} active{{/if}}">
-      <d-paper-shadow z="3" hasPosition="true"></d-paper-shadow>
+      <t-shadow z="3" hasPosition="true"></t-shadow>
       {{@rightdrawer}}
     </div>
     <!-- {{/if}} -->

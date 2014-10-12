@@ -1,0 +1,4 @@
+<index: element="t-ripple">
+<div style="{{if borderRadius}}border-radius: {{borderRadius}};{{/if}}" as="wrapper" class="t-ripple{{if circle}} circle{{/if}}{{if checked}} checked{{/if}}" on-mousedown="downAction($event)" on-mouseup="upAction($event)">
+  <canvas as="canvas" width="{{width}}px" height="{{height}}px"></canvas>
+</div>

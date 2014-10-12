@@ -1,37 +1,38 @@
-<index: element="t-datetime">
-  <div class="{{if inline}}datepicker datepicker-inline{{/}}" as="parent">
-    {{if inline}}
-      {{if view === 'month'}}
-        <view name="month"></view>
-      {{/if}}
-      {{if view === 'year'}}
-        <view name="year"></view>
-      {{/if}}
-      {{if view === 'decade'}}
-        <view name="decade"></view>
-      {{/if}}
-    {{else}}
-      <t-datetime-input value="{{value}}" on-change="setCurrent(value)" class="form-control" on-focus="model.set('show', true)" id="{{id}}" name="{{name}}" required="{{required}}"/>
+<!-- <index: element="t-datetime">
+  <div as="parent">
+    <t-datetime-input value="{{value}}" on-change="setCurrent(value)" class="form-control" on-focus="model.set('show', true)" id="{{id}}" name="{{name}}" required="{{required}}"/>
 
-      <div style="position: relative">
-        <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-top" style="display: {{if show}}block{{/}};">
-          {{if show}}
-            {{if view === 'month'}}
-              <view name="month"></view>
-            {{/}}
-            {{if view === 'year'}}
-              <view name="year"></view>
-            {{/}}
-            {{if view === 'decade'}}
-              <view name="decade"></view>
-            {{/}}
+    <div style="position: relative">
+      <div class="datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-top" style="display: {{if show}}block{{/}};">
+        {{if show}}
+          {{if view === 'month'}}
+            <view name="month"></view>
           {{/}}
-        </div>
+          {{if view === 'year'}}
+            <view name="year"></view>
+          {{/}}
+          {{if view === 'decade'}}
+            <view name="decade"></view>
+          {{/}}
+        {{/}}
       </div>
-    {{/}}
+    </div>
   </div>
-
-<dp:>
+ -->
+<!-- <inline: element="t-datetime-inline"> -->
+<index: element="t-datetime">
+  <!-- <div class="datepicker datepicker-inline" as="parent"> -->
+  <div>
+    {{if view === 'month'}}
+      <view name="month"></view>
+    {{/if}}
+    {{if view === 'year'}}
+      <view name="year"></view>
+    {{/if}}
+    {{if view === 'decade'}}
+      <view name="decade"></view>
+    {{/if}}
+  </div>
 
 <month:>
   <div class="datepicker-days">

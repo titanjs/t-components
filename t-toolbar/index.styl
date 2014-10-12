@@ -1,0 +1,115 @@
+.t-toolbar 
+  /* technical */
+  display block
+  position relative
+  box-sizing border-box
+  -moz-box-sizing border-box
+  /* size */
+  height 64px
+  /* typography */
+  font-size 24px
+  font-weight 300
+  /* background */
+  background-color $core-toolbar-background-color
+
+
+.t-toolbar.animate 
+  /* transition */
+  transition height 0.18s ease-in
+
+
+.t-toolbar.medium-tall 
+  height 128px
+
+
+.t-toolbar.tall 
+  height 192px
+
+
+.toolbar-tools 
+  height 64px
+  padding 0 8px
+  pointer-events none
+
+
+/* narrow layout */
+.t-toolbar.narrow 
+  height 56px
+
+
+.t-toolbar.narrow.medium-tall 
+  height 112px
+
+
+.t-toolbar.narrow.tall 
+  height 168px
+
+
+.t-toolbar.narrow .toolbar-tools 
+  height 56px
+  padding 0
+
+
+/* middle bar */
+.middle-bar
+  position absolute
+  top 0
+  right 0
+  left 0
+
+
+.t-toolbar.tall, .t-toolbar.medium-tall 
+  .middle-bar
+    -webkit-transform translateY(100%)
+    transform translateY(100%)
+
+
+/* bottom bar */
+.bottom-bar
+  position absolute
+  right 0
+  bottom 0
+  left 0
+
+
+/* shows bottom bar only when in normal height (!tall && !medium-tall) */
+.t-toolbar.animate.no-overlap > .top-bar,
+.t-toolbar.animate.no-overlap > .middle-bar
+  transition -webkit-transform 0.18s ease-in
+  transition transform 0.18s ease-in
+
+
+.t-toolbar.no-overlap:not(.medium-tall):not(.tall) > .top-bar
+  -webkit-transform translateY(-100%)
+  transform translateY(-100%)
+
+
+.t-toolbar.no-overlap:not(.medium-tall):not(.tall) > .middle-bar
+  -webkit-transform translateY(-200%)
+  transform translateY(-200%)
+
+
+/* make elements (e.g. buttons) respond to mouse/touch events */
+.toolbar-tools > *
+  pointer-events auto
+
+
+/* elements spacing */
+.toolbar-tools > *
+  margin 0px 8px
+
+
+/* misc helpers */
+toolbar-tools > .fit
+  position absolute
+  top auto
+  right 0
+  bottom 0
+  left 0
+  width auto
+  margin 0
+
+
+.t-toolbar .indent
+  margin-left 60px
+
