@@ -1,0 +1,31 @@
+<!-- <index: arrays="option/options" element="t-dropdown" attributes="option">
+  <div class="dropdown {{@class}}{{if open}} open{{/if}}">
+    <input as="input" type='text' on-focus="makeActive()" autocomplete='off' value='{{label(value)}}'/>
+
+    <ul as="menu" class="dropdown-menu text-select {{@menuClass}}" role="menu" aria-labelledby="dropdown-toggle{{id}}">
+      {{each @options as #o, #i}}
+        <li role="presentation" class="{{#o.class}}{{if #i == selectedIndex}} active{{/if}}">
+          {{if #i === selectedIndex}}
+            <a id="{{id + #i}}" tabindex="0" class="active-item" on-click="select(#o)" role="menuitem" aria-selected="true">{{#o.content}}</a>
+          {{else}}
+            <a id="{{id + #i}}" tabindex="-1" on-click="select(#o)" role="menuitem" aria-selected="false">{{#o.content}}</a>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+ -->
+<!--
+
+drop-down:
+  .selectize-control.single
+    .selectize-input.items.full.has-options.has-items.focus.input-active.dropdown-active
+      .item(data-value='1service-type') Script
+      input(type='text', autocomplete='off', tabindex='', style='width: 4px; opacity: 1; position: relative; left: 0px;')
+    .selectize-dropdown.single(style='display: block; visibility: visible; width: 196px; top: 34px; left: 0px;')
+      .selectize-dropdown-content
+        .option.selected(data-value='1service-type', data-selectable='') Script
+        .option(data-value='2service-type', data-selectable='') Styleframes
+        .option.active(data-value='8service-type', data-selectable='') Design
+        .option(data-value='30service-type', data-selectable='') Sound Effects
+ -->

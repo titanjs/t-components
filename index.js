@@ -18,6 +18,7 @@ module.exports = function(app, options) {
   app.component(require('./t-radio-group'));
   app.component(require('./t-ripple'));
   app.component(require('./t-star-rating'));
+  app.component(require('./t-select'));
   app.component(require('./t-shadow'));
   app.component(require('./t-toolbar'));
   app.component(require('./t-stared'));
