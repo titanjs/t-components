@@ -17,9 +17,14 @@ Icon.prototype.init = function() {
    */
   this.model.setNull('mode', 'svg');
 
-  this.model.setNull('icon', 'add');
+  // We must use getAttribute instead of this.model.get('icon')
+  var i = this.getAttribute('icon');
+  if (i) {
+    this.model.set('icon', i);
+  } else {
+    this.model.set('icon', 'add');
+  }
   this.model.setNull('data', '');
-
   this.model.setNull('config', '');
   this.model.setNull('width', '25');
   this.model.setNull('height', '25');

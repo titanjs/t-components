@@ -1,20 +1,6 @@
 <index: element="t-item">
-<!--
 
-`paper-item` is a list-item object for use in menus. It may contain and icon and/or
-a text label.
-
-Example:
-
-  <core-menu>
-    <paper-item icon="refresh">Refresh</paper-item>
-    <paper-item>Help</paper-item>
-    <paper-item>Sign Out</paper-item>
-  </core-menu>
-
--->
-
-<div data-key="{{if value}}{{value}}{{/if}}" class="t-item{{if center}} center{{/if}}{{if horizontal}}horizontal{{/if}}{{if layout}}layout{{/if}}" on-click="clickAction($event, $element)" on-dblclick="dblClickAction($event, $element)" on-mousedown="downAction($event, $element)" on-mouseup="upAction($event, $element)" on-focus="focusAction($event, $element)" on-blur="blurAction($event, $element)" on-contextmenu="contextMenuAction($event, $element)" >
+<a href="{{href || '#'}}" data-key="{{if value}}{{value}}{{/if}}" class="t-item{{if selected}} core-selected{{/if}}{{if center}} center{{/if}}{{if horizontal}}horizontal{{/if}}{{if layout}}layout{{/if}}" on-click="clickAction($event, $element)" on-dblclick="dblClickAction($event, $element)" on-mousedown="downAction($event, $element)" on-mouseup="upAction($event, $element)" on-focus="focusAction($event, $element)" on-blur="blurAction($event, $element)" on-contextmenu="contextMenuAction($event, $element)" >
 
   <t-ripple as="ripple" circle="{{circle}}" borderRadius="{{borderRadius}}"></t-ripple>
 
@@ -23,4 +9,4 @@ Example:
   {{/if}}
   
   {{label}}
-</div>
+</a>
