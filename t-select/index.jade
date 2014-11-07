@@ -1,6 +1,6 @@
 index:(arrays='option/options' element='t-select' attributes='create')
   .dropdown(class="{{if open}}open{{/if}}")
-    input(as='input' type='text' on-focus='makeActive()' autocomplete='off' value='{{label(value)}}')
+    input(class="{{@class}}" as='input' type='text' on-focus='makeActive()' autocomplete='off' value='{{label(value)}}')
     ul.dropdown-menu.text-select(class='{{@menuClass}}' as='menu' role='menu' aria-labelledby='dropdown-toggle{{id}}')
       each @options as #o, #i
         li(class="{{#o['class']}}{{if #i == selectedIndex}} active{{/if}}" role='presentation')
