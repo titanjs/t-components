@@ -3,7 +3,7 @@
     {{each @options as #o}}
       <div class="radio">
         <label>
-          {{if #o.value === value}}
+          {{if #o.value === @value}}
             <input type="radio" on-click="select(#o)" checked tabindex="-1"> {{#o.content}}
           {{else}}
             <input type="radio" on-click="select(#o)" tabindex="-1"> {{#o.content}}
