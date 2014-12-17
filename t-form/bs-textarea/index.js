@@ -1,5 +1,10 @@
 module.exports = Textarea;
 function Textarea() {}
+
+// Textarea.prototype.init = function() {
+//   this.model.set('value')
+// };
+
 Textarea.prototype.view = __dirname;
 
 Textarea.prototype.checkRequired = function() {
