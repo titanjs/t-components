@@ -9,14 +9,14 @@
     <div class="slider-frame">
       <ul class="slider-slidee">
         {{if @featured}}
-          {{with first(query)}}
+          {{with first}}
             <li class="slider-block slider-lg-object">
               <a href="/projects/{{this.slug}}">
                 <img src="/-/images/{{this.thumbnail}}/-/scale_crop/580x340/center/{{this.slug}}.jpg" alt="{{this.title}}">
               </a>
             </li>
           {{/}}
-          {{each rest(query) as #group, #i}}
+          {{each rest as #group, #i}}
             <li class="slider-block">
               <ul class="slider-block-stacked">
                 {{each #group as #item, #ii}}

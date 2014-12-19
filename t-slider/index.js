@@ -1,8 +1,25 @@
 module.exports = Slider;
+var _ = require('lodash');
+
+
 function Slider() {}
 Slider.prototype.view = __dirname;
 
-Slider.prototype.init = function(model) { };
+Slider.prototype.init = function(model) {
+  var q = this.getAttribute('query');
+  var isFeature = this.getAttribute('featured');
+  // console.log('q: ', q);
+  if (isFeature) {
+    model.set('first', _.first(q));
+    var f = q.shift();
+    model.set('rest', this.toListOfList(q));
+    console.log("first;;;;;;;", model.get('first'));
+    console.log("rest;;;;;;;;", model.get('rest'));
+  } else {
+    model.set('query', q);
+  };
+
+};
 
 Slider.prototype.create = function(model, dom) {
   require('./sly');
