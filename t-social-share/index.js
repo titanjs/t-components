@@ -9,7 +9,7 @@ SocialShare.prototype.init = function(model) {
 };
 
 SocialShare.prototype.create = function(model, dom) {
-  model.set('msg', { message: model.get('defaultShareMessage') });
+  model.set('msg', model.get('message'));
 };
 
 SocialShare.prototype.twitter = function(e, el) {
@@ -46,10 +46,10 @@ SocialShare.prototype.toggleEmailForm = function() {
   this.model.set('showEmailForm', !this.model.get('showEmailForm'));
 };
 
-SocialShare.prototype.sendEmail = function() {
-  var self = this;
-  var msg = self.model.get('msg');
-  if (!msg) return;
-  var cancelled = this.emit('send', function() {
-  });
+SocialShare.prototype.comments = function() {
+  var cancelled = this.emit('comments', function() {});
+};
+
+SocialShare.prototype.sendEmail = function(msg) {
+  var cancelled = this.emit('send', function() {});
 };

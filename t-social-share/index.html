@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-10 col-md-8">
         <br/>
-        <form on-submit="sendEmail" class="form-horizontal" method="POST">
+        <form on-submit="sendEmail(msg)" class="form-horizontal" method="POST">
           <bs-input type="text" value="{{msg.name}}" label="Your Name" required="true"></bs-input>
           <bs-input type="email" value="{{msg.email}}" label="Email <small>(Address to share with)</small>" required="true"></bs-input>
           <bs-textarea label="Messages" rows="4" required="true" value="{{msg.message}}"></bs-textarea>
