@@ -13,8 +13,6 @@ Slider.prototype.init = function(model) {
     model.set('first', _.first(q));
     var f = q.shift();
     model.set('rest', this.toListOfList(q));
-    console.log("first;;;;;;;", model.get('first'));
-    console.log("rest;;;;;;;;", model.get('rest'));
   } else {
     model.set('query', q);
   };
